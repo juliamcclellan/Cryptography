@@ -1,9 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -32,13 +31,13 @@ public class RSA {
 		BigInteger TOTIENT = (PRIME_1.subtract(BigInteger.ONE)).multiply((PRIME_2.subtract(BigInteger.ONE)));
 		BigInteger E = getPrime(TOTIENT);
 		BigInteger D = E.modInverse(TOTIENT);
-		FileWriter writer = new FileWriter(new File("public.key"));
-		writer.write(N.toString());
-		writer.write(E.toString());
+		PrintStream writer = new PrintStream(new File("public.key"));
+		writer.println(N.toString());
+		writer.println(E.toString());
 		writer.close();
-		writer = new FileWriter(new File("private.key"));
-		writer.write(N.toString());
-		writer.write(D.toString());
+		writer = new PrintStream(new File("private.key"));
+		writer.println(N.toString());
+		writer.println(D.toString());
 		writer.close();
 	}
 
@@ -117,7 +116,7 @@ public class RSA {
 	// roughly 10 bits of BigInteger per character (well the key's length must be greater than or equal to the
 	//encrypted message's length)
 	public static void main(String[] args) throws IOException {
-		generateKey();
+		//generateKey();
 		String message = "Hi Julia, I am in physics right now!";//String message = "We can fit up to 100 characters in using the 1000 bit key. That means # of chars = 0.1 * # of bits!!";
 		System.out.println("This is out message: " + message);
 		BigInteger b1 = encrypt(message);
@@ -125,6 +124,7 @@ public class RSA {
 		System.out.println("NEW STRING: " + s1);
 		System.out.println("This is the encrypted message: " + b1);
 		System.out.println("This is the decrypted message: " + decrypt(convertFromString(s1)));
+		
 	}
 
 }
