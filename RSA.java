@@ -61,7 +61,7 @@ public class RSA {
 		return convertToString(num);
 	}
 
-	private static BigInteger convertFromString(String message) {
+	public static BigInteger convertFromString(String message) {
 		String num = "";
 		for (int i = 0; i < message.length(); i++) {
 			int temp = (int) message.charAt(i);
@@ -73,7 +73,7 @@ public class RSA {
 		return new BigInteger(num);
 	}
 
-	private static String convertToString(BigInteger num) {
+	public static String convertToString(BigInteger num) {
 		StringBuffer str = new StringBuffer("");
 		String n = num.toString();
 		if (n.length() % 3 == 1) n = "00" + n;
@@ -124,14 +124,15 @@ public class RSA {
 		System.out.println("NEW STRING: " + s1);
 		System.out.println("This is the encrypted message: " + b1);
 		System.out.println("This is the decrypted message: " + decrypt(convertFromString(s1)));*/
-		Scanner scan = new Scanner(System.in);
+		/*Scanner scan = new Scanner(System.in);
 		System.out.println("e = encrypt; d = decrpyt: " );
 		char choice = scan.nextLine().charAt(0);
 		System.out.println("Input the message: ");
 		String message = scan.nextLine();
 		if(choice == 'e') System.out.println(convertToString(encrypt(message)));
 		else if(choice == 'd') System.out.println(decrypt(convertFromString(message)));
-		scan.close();
+		scan.close();*/
+		RSA_Frame frame = new RSA_Frame();
 	}
 
 }
