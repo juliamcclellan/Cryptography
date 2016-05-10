@@ -117,14 +117,21 @@ public class RSA {
 	//encrypted message's length)
 	public static void main(String[] args) throws IOException {
 		//generateKey();
-		String message = "Hi Julia, I am in physics right now!";//String message = "We can fit up to 100 characters in using the 1000 bit key. That means # of chars = 0.1 * # of bits!!";
+		/*String message = "Hi Julia, I am in physics right now!";//String message = "We can fit up to 100 characters in using the 1000 bit key. That means # of chars = 0.1 * # of bits!!";
 		System.out.println("This is out message: " + message);
 		BigInteger b1 = encrypt(message);
 		String s1 = convertToString(b1);
 		System.out.println("NEW STRING: " + s1);
 		System.out.println("This is the encrypted message: " + b1);
-		System.out.println("This is the decrypted message: " + decrypt(convertFromString(s1)));
-		
+		System.out.println("This is the decrypted message: " + decrypt(convertFromString(s1)));*/
+		Scanner scan = new Scanner(System.in);
+		System.out.println("e = encrypt; d = decrpyt: " );
+		char choice = scan.nextLine().charAt(0);
+		System.out.println("Input the message: ");
+		String message = scan.nextLine();
+		if(choice == 'e') System.out.println(convertToString(encrypt(message)));
+		else if(choice == 'd') System.out.println(decrypt(convertFromString(message)));
+		scan.close();
 	}
 
 }
