@@ -11,11 +11,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 public class RSA_Frame extends JFrame
 {
-	private JTextArea enter, result;
+	private JTextPane enter, result;
 	private JRadioButton e;
 	private JButton code;
 	
@@ -41,7 +41,7 @@ public class RSA_Frame extends JFrame
 		panel.add(buttons, c);
 		
 		c.gridy++;
-		enter = new JTextArea();
+		enter = new JTextPane();
 		enter.setPreferredSize(new Dimension(300, 100));
 		enter.setMinimumSize(new Dimension(300, 100));
 		panel.add(enter, c);
@@ -70,7 +70,7 @@ public class RSA_Frame extends JFrame
 		c.gridy++;
 		panel.add(Box.createVerticalStrut(10), c);
 		c.gridy++;
-		result = new JTextArea();
+		result = new JTextPane();
 		result.setPreferredSize(new Dimension(300, 100));
 		result.setMinimumSize(new Dimension(300, 100));
 		panel.add(result, c);
