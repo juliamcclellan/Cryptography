@@ -8,22 +8,6 @@ import java.util.Scanner;
 
 public class RSA {
 	
-	/*private BigInteger PRIME_1;
-	private BigInteger PRIME_2;
-	private BigInteger N;
-	private BigInteger TOTIENT;
-	private BigInteger E;
-	private BigInteger D;*/
-
-	/*public RSA() {
-		PRIME_1 = getPrime();
-		PRIME_2 = getPrime(PRIME_1);
-		N = new BigInteger("" + PRIME_1).multiply(new BigInteger("" + PRIME_2));
-		TOTIENT = (PRIME_1.subtract(BigInteger.ONE)).multiply((PRIME_2.subtract(BigInteger.ONE)));
-		E = getPrime(TOTIENT);
-		D = E.modInverse(TOTIENT);
-	}*/
-	
 	public static void generateKey() throws IOException {
 		BigInteger PRIME_1 = getPrime();
 		BigInteger PRIME_2 = getPrime(PRIME_1);
@@ -86,11 +70,6 @@ public class RSA {
 
 	// returns a prime from 100 000 000 to 1 000 000 000
 	public static BigInteger getPrime() {
-		/*
-		 * long n = (long)(900000000 * Math.random() + 100000000);
-		 * while(!isPrime(n)) n = (long)(900000000 * Math.random() + 100000000);
-		 * return new BigInteger("" + n);
-		 */
 		return BigInteger.probablePrime(500, new Random());
 	}
 
@@ -116,23 +95,9 @@ public class RSA {
 	// roughly 10 bits of BigInteger per character (well the key's length must be greater than or equal to the
 	//encrypted message's length)
 	public static void main(String[] args) throws IOException {
-		//generateKey();
-		/*String message = "Hi Julia, I am in physics right now!";//String message = "We can fit up to 100 characters in using the 1000 bit key. That means # of chars = 0.1 * # of bits!!";
-		System.out.println("This is out message: " + message);
-		BigInteger b1 = encrypt(message);
-		String s1 = convertToString(b1);
-		System.out.println("NEW STRING: " + s1);
-		System.out.println("This is the encrypted message: " + b1);
-		System.out.println("This is the decrypted message: " + decrypt(convertFromString(s1)));*/
-		/*Scanner scan = new Scanner(System.in);
-		System.out.println("e = encrypt; d = decrpyt: " );
-		char choice = scan.nextLine().charAt(0);
-		System.out.println("Input the message: ");
-		String message = scan.nextLine();
-		if(choice == 'e') System.out.println(convertToString(encrypt(message)));
-		else if(choice == 'd') System.out.println(decrypt(convertFromString(message)));
-		scan.close();*/
-		RSA_Frame frame = new RSA_Frame();
+		
+		RSA_Frame a = new RSA_Frame("Ashok", true, null);
+		RSA_Frame b = new RSA_Frame("Barbara", false, a);
 	}
 
 }
