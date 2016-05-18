@@ -20,7 +20,7 @@ public class RSA_Frame extends JFrame
 	private JButton code;
 	private RSA_Frame other; //The person to send and receive messages from
 	
-	public RSA_Frame(String name, boolean canDecrypt, RSA_Frame other)
+	public RSA_Frame(String name, boolean canDecrypt, final RSA_Frame other)
 	{
 		super(name);
 		this.other = other;
