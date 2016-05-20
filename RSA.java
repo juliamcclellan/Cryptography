@@ -1,3 +1,12 @@
+/*
+ * File: RSA.java
+ * Name: Giacalone/McClellan
+ * Date: 05/21/2016
+ * -------------------------
+ * The main class for the RSA cryptography program. Controls the keys and backend
+ * encryption and decryption.
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,6 +17,7 @@ import java.util.Scanner;
 
 public class RSA {
 	
+	//makes the RSA key
 	public static void generateKey() throws IOException {
 		BigInteger PRIME_1 = getPrime();
 		BigInteger PRIME_2 = getPrime(PRIME_1);
@@ -44,7 +54,8 @@ public class RSA {
 		BigInteger num = message.modPow(D, N);
 		return convertToString(num);
 	}
-
+	
+	//takes the message and converts it to a number
 	public static BigInteger convertFromString(String message) {
 		String num = "";
 		for (int i = 0; i < message.length(); i++) {
@@ -56,7 +67,8 @@ public class RSA {
 		}
 		return new BigInteger(num);
 	}
-
+	
+	//converts the number into the character message
 	public static String convertToString(BigInteger num) {
 		StringBuffer str = new StringBuffer("");
 		String n = num.toString();
@@ -68,23 +80,12 @@ public class RSA {
 		return str.toString();
 	}
 
-	// returns a prime from 100 000 000 to 1 000 000 000
+	// returns a large prime number
 	public static BigInteger getPrime() {
 		return BigInteger.probablePrime(500, new Random());
 	}
-
-	private static boolean isPrime(long n) {
-		if (n <= 1) return false;
-		else if (n <= 3) return true;
-		else if (n % 2 == 0 || n % 3 == 0) return false;
-		int i = 5;
-		while (i * i <= n) {
-			if (n % i == 0 || n % (i + 2) == 0) return false;
-			i = i + 6;
-		}
-		return true;
-	}
-
+	
+	//gets a prime that is not equal to the provided integer
 	public static BigInteger getPrime(BigInteger not) {
 		BigInteger num = getPrime();
 		while (num.equals(not))
@@ -92,10 +93,8 @@ public class RSA {
 		return num;
 	}
 
-	// roughly 10 bits of BigInteger per character (well the key's length must be greater than or equal to the
-	//encrypted message's length)
+	// runs the program
 	public static void main(String[] args) throws IOException {
-		
 		RSA_Frame a = new RSA_Frame("Ashok", true, null);
 		RSA_Frame b = new RSA_Frame("Barbara", false, a);
 	}

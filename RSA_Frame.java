@@ -1,3 +1,11 @@
+/*
+ * File: RSA_Frame.java
+ * Name: Giacalone/McClellan
+ * Date: 05/21/2016
+ * -------------------------
+ * The GUI for the RSA cryptography program.
+ */
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
